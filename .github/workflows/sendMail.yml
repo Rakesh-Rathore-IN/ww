@@ -9,6 +9,10 @@ jobs:
    send-email:
     runs-on: ubuntu-latest
     steps:
+      # Step: Checkout the source code
+      - name: 'Checkout source code'
+        uses: actions/checkout@v2
+    
       - name: Send Email using Gmail
         uses: dawidd6/action-send-mail-smtp@v3
         with:
