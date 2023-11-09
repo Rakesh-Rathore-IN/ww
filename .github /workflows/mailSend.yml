@@ -1,0 +1,39 @@
+name: Send Email
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: 'rakesh.rathore@metacube.com'
+          password: 'rpukphitgnihitil'
+          subject: 'GitHub Actions Email'
+          to: 'rakesh.rathore@metacube.com'
+          from: 'rakesh.rathore@metacube.com'
+          body: |
+            Hello,
+
+            This is a test email sent from GitHub Actions.
+
+            Best regards,
+            Your Name
