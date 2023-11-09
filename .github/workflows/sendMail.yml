@@ -28,7 +28,7 @@ jobs:
           username: 'rakesh.rathore@metacube.com'
           password: 'rpukphitgnihitil'
           subject: 'GitHub Actions Email'
-          to: 'rakesh.rathore@metacube.com'
+          to: 'banna.rakesh@gmail.com'
           from: 'rakesh.rathore@metacube.com'
           body: |
             Hello,
