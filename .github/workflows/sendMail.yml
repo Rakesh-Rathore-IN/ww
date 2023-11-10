@@ -6,15 +6,15 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Create data file
-        run: echo "Data to share" > ${{ runner.workspace }}/shared-data.txt
+      - name: Set shared data
+        run: echo "Data to share" >> $RUNNER_TEMP/shared-data.txt
 
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Read data file
+      - name: Read shared data
         run: |
-          shared_data=$(cat ${{ runner.workspace }}/shared-data.txt)
+          shared_data=$(cat $RUNNER_TEMP/shared-data.txt)
           echo "Data in the env: $shared_data"
 
