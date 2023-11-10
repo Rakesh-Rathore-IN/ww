@@ -12,7 +12,7 @@ jobs:
           node-version: '16'
           
       - name: Set shared data
-        run: echo "Data to share" > shared-data.txt
+        run: echo "Data to share with rakesh" > shared-data.txt
         
       - name: Upload shared data as artifact
         uses: actions/upload-artifact@v2
