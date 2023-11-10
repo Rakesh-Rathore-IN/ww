@@ -7,13 +7,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create data file
-        run: echo "Data to share" > data.txt
-        env:
-          SHARED_DATA: "Data to share"
+        run: |
+          echo "Data to share" > data.txt
+          echo "SHARED_DATA=Data to share" >> $GITHUB_ENV
 
   read-data:
     needs: create-data
     runs-on: ubuntu-latest
     steps:
       - name: Read data from environment variable
-        run: echo "Data in the env: ${{ env.SHARED_DATA }}"
+        run: |
+          echo "Data in the env: $SHARED_DATA"
