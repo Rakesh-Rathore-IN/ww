@@ -16,4 +16,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Read data from environment variable
-        run: echo "Data in the env:$SHARED_DATA"
+        run: echo "Data in the env: ${{ env.SHARED_DATA }}"
