@@ -3,18 +3,17 @@ name: Share Data Between Jobs
 on: [push]
 
 jobs:
-  create-data:
+  job1:
     runs-on: ubuntu-latest
     steps:
       - name: Create data file
-        run: |
-          echo "Data to share" > data.txt
-          echo "SHARED_DATA=Data to share" >> $GITHUB_ENV
+        run: echo "Data to share" > shared-data.txt
 
-  read-data:
-    needs: create-data
+  job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Read data from environment variable
+      - name: Read data file
         run: |
-          echo "Data in the env: $SHARED_DATA"
+          shared_data=$(cat shared-data.txt)
+          echo "Data in the env: $shared_data"
