@@ -7,14 +7,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Set shared data
-        run: echo "Data to share" >> $RUNNER_TEMP/shared-data.txt
+        run: echo "Data to share" > shared-data.txt
+      - name: Upload shared data as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: shared-data
+          path: shared-data.txt
 
   job2:
     needs: job1
     runs-on: ubuntu-latest
     steps:
+      - name: Download shared data artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: shared-data
+          path: ${{ runner.temp }}/shared-data
+
       - name: Read shared data
         run: |
-          shared_data=$(cat $RUNNER_TEMP/shared-data.txt)
+          shared_data=$(cat ${{ runner.temp }}/shared-data/shared-data.txt)
           echo "Data in the env: $shared_data"
+
 
