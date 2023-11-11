@@ -119,17 +119,21 @@ jobs:
           name: shared-data
           path: ${{ runner.temp }}/shared-data
   
-      - name: Read shared data 1
+      - name: Read User Name
         run: |
-          shared_data1=$(cat ${{ runner.temp }}/shared-data/shared-data.txt)
-          echo "Data in shared-data.txt: $shared_data1"
-          echo "shared_data1=$shared_data1" >> $GITHUB_ENV
+          userName=$(cat ${{ runner.temp }}/shared-data/shared-data.txt --json | jq -r '.result.username')
+          echo "userName=$userName" >> $GITHUB_ENV
   
-      - name: Read shared data 2
+      - name: Read Password
         run: |
-          shared_data2=$(cat ${{ runner.temp }}/shared-data/password-data.txt)
-          echo "Data in password-data.txt: $shared_data2"
-          echo "shared_data2=$shared_data2" >> $GITHUB_ENV
+          password=$(cat ${{ runner.temp }}/shared-data/shared-data.txt --json | jq -r '.result.password')
+          echo "password=$password" >> $GITHUB_ENV
+
+      - name: Read Url
+        run: |
+          url=$(cat ${{ runner.temp }}/shared-data/password-data.txt --json | jq -r '.result.LoginUrl')
+          echo "url=$url" >> $GITHUB_ENV
+  
   
       - name: Send Email
         uses: dawidd6/action-send-mail@v2
@@ -143,10 +147,10 @@ jobs:
           from: 'rakesh.rathore@metacube.com'
           body: |
             Hello,
-            Data from shared-data.txt: ${{ env.shared_data1 }}
-            Data from password-data.txt: ${{ env.shared_data2 }}
+            Data from shared-data.txt: ${{ env.LoginUrl }}
+            Data from password-data.txt: ${{ env.userName }}
             This is a test email sent from GitHub Actions.
-            Best regards,
+            Best regards, ${{ env.password }}
             Your Name
 
 
