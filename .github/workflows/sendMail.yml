@@ -6,11 +6,7 @@ jobs:
   job1:
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
+     
       - name: Set shared data 1
         run: echo "Data to share" > shared-data.txt
       - name: Upload shared data as artifact
@@ -30,11 +26,7 @@ jobs:
     needs: job1
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
-
+    
       - name: Download shared data artifact
         uses: actions/download-artifact@v2
         with:
