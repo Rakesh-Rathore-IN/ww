@@ -121,17 +121,17 @@ jobs:
   
       - name: Read User Name
         run: |
-          userName=$(cat ${{ runner.temp }}/shared-data/shared-data.txt --json | jq -r '.result.username')
+          userName=$(cat ${{ runner.temp }}/shared-data/shared-data.txt | jq -r '.result.username')
           echo "userName=$userName" >> $GITHUB_ENV
   
       - name: Read Password
         run: |
-          password=$(cat ${{ runner.temp }}/shared-data/shared-data.txt --json | jq -r '.result.password')
+          password=$(cat ${{ runner.temp }}/shared-data/shared-data.txt | jq -r '.result.password')
           echo "password=$password" >> $GITHUB_ENV
 
       - name: Read Url
         run: |
-          url=$(cat ${{ runner.temp }}/shared-data/password-data.txt --json | jq -r '.result.LoginUrl')
+          url=$(cat ${{ runner.temp }}/shared-data/password-data.txt  | jq -r '.result.LoginUrl')
           echo "url=$url" >> $GITHUB_ENV
   
   
