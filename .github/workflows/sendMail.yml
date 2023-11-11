@@ -121,7 +121,7 @@ jobs:
   
       - name: Read Url
         run: |
-          instanceUrl=$(cat ${{ runner.temp }}/shared-data/password-data.txt | jq -r '.authFields.instanceUrl')
+          instanceUrl=$(cat ${{ runner.temp }}/shared-data/password-data.txt | jq -r '.result.authFields.instanceUrl')
           echo "instanceUrl=$instanceUrl" >> $GITHUB_ENV
           
       - name: Read User Name
