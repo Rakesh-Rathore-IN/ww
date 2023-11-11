@@ -15,7 +15,84 @@ jobs:
           name: shared-data
           path: shared-data.txt
       - name: Set shared data 2
-        run: echo "HareK" > password-data.txt
+        run: |
+          echo '{
+                "status": 0,
+                "result": {
+                  "username": "test-6i4rndyky89g@example.com",
+                  "scratchOrgInfo": {
+                    "attributes": {
+                      "type": "ScratchOrgInfo",
+                      "url": "/services/data/v59.0/sobjects/ScratchOrgInfo/2SR5g000000cVv7GAE"
+                    },
+                    "Id": "2SR5g000000cVv7GAE",
+                    "OwnerId": "0055g00000HGADxAAP",
+                    "IsDeleted": false,
+                    "Name": "00000056",
+                    "CreatedDate": "2023-11-11T14:31:48.000+0000",
+                    "CreatedById": "0055g00000HGADxAAP",
+                    "LastModifiedDate": "2023-11-11T14:32:07.000+0000",
+                    "LastModifiedById": "0055g00000ISVipAAH",
+                    "SystemModstamp": "2023-11-11T14:32:07.000+0000",
+                    "LastViewedDate": "2023-11-11T14:31:48.000+0000",
+                    "LastReferencedDate": "2023-11-11T14:31:48.000+0000",
+                    "Edition": "Developer",
+                    "Username": null,
+                    "AdminEmail": null,
+                    "OrgName": "SalesboltOrg-Scratch",
+                    "DurationDays": 7,
+                    "ConnectedAppConsumerKey": "PlatformCLI",
+                    "ConnectedAppCallbackUrl": "http://localhost:1717/OauthRedirect",
+                    "Namespace": "RC_Build",
+                    "Features": "EnableSetPasswordInApi",
+                    "Country": null,
+                    "Language": null,
+                    "Instance": null,
+                    "Package2AncestorIds": null,
+                    "SourceOrg": null,
+                    "HasSampleData": true,
+                    "Release": "Current",
+                    "SignupUsername": "test-6i4rndyky89g@example.com",
+                    "Status": "Active",
+                    "ErrorCode": null,
+                    "ScratchOrg": "00DH30000008dRK",
+                    "SignupInstance": "CS314",
+                    "AuthCode": "aPrxff8fB79jL_LbD0rEniueoZ6sxnktzOmAa_yIJhBRBCn3QaeyYL7RHWn1ro0F8DBVEHDrEA==",
+                    "SignupCountry": "IN",
+                    "SignupLanguage": "en_US",
+                    "SignupEmail": "rakesh.rathore@metacube.com",
+                    "SignupTrialDays": 7,
+                    "LoginUrl": "https://power-speed-7822-dev-ed.scratch.my.salesforce.com/",
+                    "Description": null,
+                    "ExpirationDate": "2023-11-18",
+                    "LastLoginDate": null,
+                    "DeletedBy": null,
+                    "DeletedDate": null
+                  },
+                  "authFields": {
+                    "accessToken": "5ca517693d35341c3aa53dfc3ec2bb49a734d4acec0b28637bb4ef0635fe73ef72d2a04120d449b793ecd283ada5f2aec0b10a0a10425a861adb6a5f738afe5bfe10a9a0b3b994dcec1e6b9031f9e377d9c6e2a164fe12eb44cfdfac06b91855b2e2d6a656bda3a6ff525195eaa7f85fb0087ba84761:a6465c9ff2769938d5c7941345e1beee",
+                    "instanceUrl": "https://power-speed-7822-dev-ed.scratch.my.salesforce.com",
+                    "orgId": "00DH30000008dRKMAY",
+                    "username": "test-6i4rndyky89g@example.com",
+                    "loginUrl": "https://CS314.salesforce.com",
+                    "refreshToken": "673dc3ab9d556c271ce136632773ea90661083c6cbf071841e033e0133fbe873ae0fbbf0bbe91bfb60f76086ad5aa1d0ef7c0a3f50119bdc211663a6ebd0c7d9a0a0538ce0a4bb452a2692a859b3f523503259b8b625449f36fa596aae:c0d265f2242d49fc127ab15ca381401b",
+                    "clientId": "PlatformCLI",
+                    "isDevHub": false,
+                    "devHubUsername": "rakesh.salesbolt@metacube.com",
+                    "created": "1699713108000",
+                    "expirationDate": "2023-11-18",
+                    "createdOrgInstance": "CS314",
+                    "instanceApiVersion": "59.0",
+                    "instanceApiVersionLastRetrieved": "11/11/2023, 2:32:11 PM",
+                    "tracksSource": true
+                  },
+                  "warnings": [],
+                  "orgId": "00DH30000008dRKMAY"
+                },
+                "warnings": [
+                  "The force:org:create command is deprecated. Try \"org create scratch\" or \"org create sandbox\" instead."
+                ]
+              }' > password-data.txt
       - name: Upload shared data as artifact
         uses: actions/upload-artifact@v2
         with:
