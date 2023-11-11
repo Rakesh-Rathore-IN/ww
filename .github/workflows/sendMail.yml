@@ -10,10 +10,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          
+
       - name: Set shared data
-        run: echo "Data to share with rakesh" > shared-data.txt
-        
+        run: echo "Data to share" > shared-data.txt
       - name: Upload shared data as artifact
         uses: actions/upload-artifact@v2
         with:
@@ -28,7 +27,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          
+
       - name: Download shared data artifact
         uses: actions/download-artifact@v2
         with:
@@ -38,6 +37,4 @@ jobs:
       - name: Read shared data
         run: |
           shared_data=$(cat ${{ runner.temp }}/shared-data/shared-data.txt)
-          echo "Data in the env: $shared_data"
-
-
+          echo "Data in the file: $shared_data"
