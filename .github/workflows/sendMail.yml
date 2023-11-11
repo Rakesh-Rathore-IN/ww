@@ -143,8 +143,9 @@ jobs:
           from: 'rakesh.rathore@metacube.com'
           body: |
             Hello,
-            Data from shared-data.txt: ${{ steps.shared_data_1.outputs.shared_data_1 }}
-            Data from password-data.txt: ${{ steps.shared_data_2.outputs.shared_data_2 }}
+            Data from shared-data.txt: $shared_data1
+            Data from password-data.txt: $shared_data2
             This is a test email sent from GitHub Actions.
             Best regards,
             Your Name
+
