@@ -11,13 +11,20 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Set shared data
+      - name: Set shared data 1
         run: echo "Data to share" > shared-data.txt
       - name: Upload shared data as artifact
         uses: actions/upload-artifact@v2
         with:
           name: shared-data
           path: shared-data.txt
+      - name: Set shared data 2
+        run: echo "HareK" > password-data.txt
+      - name: Upload shared data as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: shared-data
+          path: password-data.txt    
 
   job2:
     needs: job1
@@ -37,4 +44,9 @@ jobs:
       - name: Read shared data
         run: |
           shared_data=$(cat ${{ runner.temp }}/shared-data/shared-data.txt)
+          echo "Data in the file: $shared_data"
+
+      - name: Read shared data
+        run: |
+          shared_data=$(cat ${{ runner.temp }}/shared-data/password-data.txt)
           echo "Data in the file: $shared_data"
