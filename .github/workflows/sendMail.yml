@@ -119,6 +119,11 @@ jobs:
           name: shared-data
           path: ${{ runner.temp }}/shared-data
   
+      - name: Read Url
+        run: |
+          instanceUrl=$(cat ${{ runner.temp }}/shared-data/password-data.txt | jq -r '.authFields.instanceUrl')
+          echo "instanceUrl=$instanceUrl" >> $GITHUB_ENV
+          
       - name: Read User Name
         run: |
           userName=$(cat ${{ runner.temp }}/shared-data/shared-data.txt | jq -r '.result.username')
@@ -128,12 +133,6 @@ jobs:
         run: |
           password=$(cat ${{ runner.temp }}/shared-data/shared-data.txt | jq -r '.result.password')
           echo "password=$password" >> $GITHUB_ENV
-
-      - name: Read Url
-        run: |
-          url=$(cat ${{ runner.temp }}/shared-data/password-data.txt | jq -r '.authFields.instanceUrl')
-          echo "url=$url" >> $GITHUB_ENV
-  
   
       - name: Send Email
         uses: dawidd6/action-send-mail@v2
@@ -147,7 +146,7 @@ jobs:
           from: 'rakesh.rathore@metacube.com'
           body: |
             Hello,
-            Data from shared-data.txt: ${{ env.LoginUrl }}
+            Data from shared-data.txt: ${{ env.instanceUrl }}
             Data from password-data.txt: ${{ env.userName }}
             This is a test email sent from GitHub Actions.
             Best regards, ${{ env.password }}
