@@ -146,7 +146,7 @@ jobs:
           from: 'rakesh.rathore@metacube.com'
           body: |
             Hello,
-            Data from shared-data.txt: ${{ env.instanceUrl }}
+            Data from46465465: ${{ env.instanceUrl }}
             Data from password-data.txt: ${{ env.userName }}
             This is a test email sent from GitHub Actions.
             Best regards, ${{ env.password }}
