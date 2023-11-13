@@ -1,0 +1,28 @@
+name: Send Email on Push
+
+on:
+  push:
+    branches:
+      - main # You can change this to the branch you want
+
+jobs:
+  send_email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Send Email
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: 'rakesh.rathore@metacube.com'
+          password: 'rpukphitgnihitil'
+          subject: 'GitHub Actions Email'
+          to: ${{ env.EMAIL_ADDRESS }}
+          from: 'rakesh.rathore@metacube.com'
+          body: |
+            Hello,
+            Your Name
