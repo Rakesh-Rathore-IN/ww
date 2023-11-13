@@ -142,7 +142,7 @@ jobs:
           username: 'rakesh.rathore@metacube.com'
           password: 'rpukphitgnihitil'
           subject: 'GitHub Actions Email'
-          to: ${{ env.EMAIL_ADDRESS }}
+          to: ${{ variables.EMAIL_ADDRESS }}
           from: 'rakesh.rathore@metacube.com'
           body: |
             Hello,
